@@ -25,6 +25,6 @@ class Recipe extends Model
 
     public function user(): BelongsTo
     {
-        return $this->HasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }
