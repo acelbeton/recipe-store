@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('cook_time');
             $table->integer('servings');
             $table->json('tags');
-            $table->foregnId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('image_url');
             $table->timestamps();
         });
