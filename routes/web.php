@@ -1,7 +1,14 @@
 <?php
 
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('recipe')->group(function () {
+        Route::get('/create', [RecipeController::class, 'create'])->name('create');
+    });
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome');

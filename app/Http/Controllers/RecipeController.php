@@ -9,6 +9,8 @@ use App\Services\RecipeService;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class RecipeController extends Controller
 {
@@ -19,7 +21,12 @@ class RecipeController extends Controller
         $this->recipeService = $recipeService;
     }
 
-    public function create(RecipeRequest $request): JsonResponse
+    public function create(): Response
+    {
+        return Inertia::render('recipe/CreateRecipe');
+    }
+
+    public function store(RecipeRequest $request): JsonResponse
     {
         try {
             $result = $this->recipeService->createRecipe($request->validated());
